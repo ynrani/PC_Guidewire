@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-3.1.xsd
+		http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd">
+        
+        
+       
+ 
+	<bean id="tdmUserDS" class="org.springframework.jndi.JndiObjectFactoryBean">
+	    <property name="jndiName" value="java:jboss/datasources/tdmUserDS" />
+	    <property name="resourceRef" value="true" />        
+	</bean> 
+	
+	<bean id="tdmProvDS" class="org.springframework.jndi.JndiObjectFactoryBean">
+	    <property name="jndiName" value="java:jboss/datasources/tdmProvDS" />
+	    <property name="resourceRef" value="true" />        
+	</bean> 
+      
+     <bean id="tdmSubDS" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="java:jboss/datasources/tdmSubDS"/>
+	</bean>
+	
+	<bean id="tdmClaimDS" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="java:jboss/datasources/tdmClaimDS"/>
+	</bean>
+	
+	<bean id="tdmDataMaskingDS" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="java:jboss/datasources/tdmDataMaskingDS"/>
+	</bean>
+	
+	<bean id="entityManagerFactoryUser"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="persistenceXmlLocation" value="/WEB-INF/persistence.xml" />
+		<property name="persistenceUnitName" value="userPersistenceUnit" />
+		<property name="dataSource" ref="tdmUserDS" />
+		<property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
+	</bean>
+	
+	<bean id="entityManagerFactoryProv"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="persistenceXmlLocation" value="/WEB-INF/persistence.xml" />
+		<property name="persistenceUnitName" value="provPersistenceUnit" />
+		<property name="dataSource" ref="tdmProvDS" />
+		<property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
+	</bean>
+	
+	
+	<bean id="entityManagerFactorySubsc"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="persistenceXmlLocation" value="/WEB-INF/persistence.xml" />
+		<property name="persistenceUnitName" value="subscPersistenceUnit" />
+		<property name="dataSource" ref="tdmSubDS" />
+		<property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
+	</bean>
+	
+	 <bean id="entityManagerFactoryClaim"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="persistenceXmlLocation" value="/WEB-INF/persistence.xml" />
+		<property name="persistenceUnitName" value="claimPersistenceUnit" />
+		<property name="dataSource" ref="tdmClaimDS" />
+		<property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
+	</bean>
+	
+	 <bean id="entityManagerFactoryDataMasking"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="persistenceXmlLocation" value="/WEB-INF/persistence.xml" />
+		<property name="persistenceUnitName" value="dataMaskingPersistenceUnit" />
+		<property name="dataSource" ref="tdmDataMaskingDS" />
+		<property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
+	</bean>
+	
+	<bean id="jpaVendorAdapter"
+		class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+		<property name="databasePlatform" value="org.hibernate.dialect.Oracle9iDialect" />
+	</bean>
+	
+	<bean id="transactionManagerUser" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactoryUser" />
+		<property name="dataSource" ref="tdmUserDS" />
+		
+	</bean>
+	
+	<bean id="transactionManageProvr" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactoryProv" />
+		<property name="dataSource" ref="tdmProvDS" />
+		
+	</bean>
+	
+	<bean id="transactionManagerSubsc" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactorySubsc" />
+        <property name="dataSource" ref="tdmSubDS" />
+    </bean>  
+     
+     <bean id="transactionManagerClaim" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactoryClaim" />
+        <property name="dataSource" ref="tdmClaimDS" />
+    </bean> 
+    
+     <bean id="transactionManagerDataMasking" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactoryDataMasking" />
+        <property name="dataSource" ref="tdmDataMaskingDS" />
+    </bean> 
+    
+    <tx:annotation-driven transaction-manager="entityManagerFactory" /> 
+	<tx:annotation-driven transaction-manager="entityManagerFactoryUser" /> 
+	<tx:annotation-driven transaction-manager="entityManagerFactoryProv" /> 
+	<tx:annotation-driven transaction-manager="entityManagerFactorySubsc" /> 
+	<tx:annotation-driven transaction-manager="entityManagerFactoryClaim" />
+	<tx:annotation-driven transaction-manager="entityManagerFactoryDataMasking" /> 
+	
+    <context:property-placeholder location="classpath:properties/mail.properties" />
+    
+    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl"
+          p:host="pushmail.uk.capgemini.com"
+          p:username="${mail.username}"
+          p:password="${mail.password}">
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.smtp.auth">true</prop>
+                <prop key="mail.smtp.starttls.enable">true</prop>
+            </props>
+        </property>
+    </bean>
+    
+	<bean id="velocityEngine" class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
+	  <property name="velocityProperties">
+		 <value>
+		  resource.loader=class
+		  class.resource.loader.class=org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+		 </value>
+	  </property>
+	</bean> 
+	  
+	<bean id="emailNotificationService" class="com.tdm.email.EmailNotificationServiceImpl">
+	  <property name="mailSender" ref="mailSender"/>
+	  <property name="velocityEngine" ref="velocityEngine"/>
+	</bean>
+    
+   <bean id="searchProviderRecordOutputListExcel"
+	   	class="com.tdm.view.SearchProviderOutputListExcelView">
+   </bean>
+	
+   <bean id="searchSubscriberRecordOutputListExcel"
+	   	class="com.tdm.view.SearchSubscriberOutputListExcelView">
+   </bean>
+	
+   <bean id="searchClaimRecordOutputListExcel"
+	   	class="com.tdm.view.SearchClaimOutputListExcelView">
+   </bean>
+   
+   <bean id="dataMaskingRecordExcel"
+	   	class="com.tdm.view.DataMaskingRecordExcelView">
+   </bean>
+   
+    <bean id="dataMaskingDashBoardExcel"
+	   	class="com.tdm.view.DataMaskingDashBoardExcel">
+   </bean>
+	
+	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+	 <property name="basenames" value="classpath:properties/Messages"/>
+	</bean>
+         
+    <bean id="messageAdapter"
+		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<!-- Message converters -->
+				<bean class="org.springframework.http.converter.StringHttpMessageConverter" />
+				<bean class="org.springframework.http.converter.FormHttpMessageConverter"/>
+				<bean class="org.springframework.http.converter.ByteArrayHttpMessageConverter" />
+				<bean class="org.springframework.http.converter.xml.SourceHttpMessageConverter" />
+				<bean class="org.springframework.http.converter.BufferedImageHttpMessageConverter" />
+				<bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter" />
+			</list>
+		</property>
+	</bean>
+</beans>
+
+
+

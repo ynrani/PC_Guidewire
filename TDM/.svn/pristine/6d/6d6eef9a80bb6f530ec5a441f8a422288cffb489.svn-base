@@ -1,0 +1,103 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+    xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+          http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+          http://www.springframework.org/schema/context
+		  http://www.springframework.org/schema/context/spring-context-3.2.xsd
+          http://www.springframework.org/schema/security
+          http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+          
+   <beans:import resource="spring-config.xml"/>
+   <global-method-security pre-post-annotations="enabled" />
+
+   <http auto-config="false" use-expressions="true" disable-url-rewriting="true">
+        <access-denied-handler error-page="/403page"/>
+         <intercept-url pattern="/index*" access="hasAnyRole('ROLE_USER','ROLE_ADMIN','ROLE_TDMUSER','ROLE_TDMADMIN')" />
+        <intercept-url pattern="/tdm*" access="hasAnyRole('ROLE_USER','ROLE_ADMIN','ROLE_TDMUSER','ROLE_TDMADMIN')" />
+        <intercept-url pattern="/res*" access="hasAnyRole('ROLE_USER','ROLE_ADMIN','ROLE_TDMUSER','ROLE_TDMADMIN')" />
+   		<intercept-url pattern="/find*" access="hasAnyRole('ROLE_USER','ROLE_ADMIN','ROLE_TDMUSER','ROLE_TDMADMIN')" />
+   		<intercept-url pattern="/getD*" access="hasAnyRole('ROLE_USER','ROLE_ADMIN','ROLE_TDMUSER','ROLE_TDMADMIN')" />
+   		<intercept-url pattern="/admin*" access="hasAnyRole('ROLE_ADMIN','ROLE_TDMADMIN')" />
+   		<intercept-url pattern="/testdispl*" access="hasAnyRole('ROLE_ADMIN','ROLE_TDMADMIN')" />
+   		<intercept-url pattern="/popupEmail*" access="hasAnyRole('ROLE_USER','ROLE_ADMIN','ROLE_TDMUSER','ROLE_TDMADMIN')" />   		
+   		<anonymous enabled='false'/>
+   		
+		<form-login login-processing-url="/tesdaLogin"  login-page="/login"
+			username-parameter="userid" password-parameter="password"
+			authentication-failure-url="/authFail?auth=fail"
+			authentication-success-handler-ref="authenticationSuccessHandler" />
+				
+		<session-management invalid-session-url="/sessionExp?session=expired" session-authentication-error-url="/sessionExp?session=alreadyLogged" session-fixation-protection="newSession">
+		        <concurrency-control error-if-maximum-exceeded="true" max-sessions="5" expired-url="/sessionExp?session=expired" session-registry-ref="sessionRegistry"/>            
+		</session-management>
+		
+		<!-- <session-management invalid-session-url="/tesdaLogin">
+		    <concurrency-control max-sessions="1" error-if-maximum-exceeded="true"  />
+		</session-management> -->
+		
+		<logout invalidate-session="true" delete-cookies="jsessionid"/>
+		
+		<headers>
+     	   <cache-control />
+   		 </headers>
+  </http>
+
+	<beans:bean id="authenticationSuccessHandler" class="com.tdm.handler.UserAuthenticationSuccessHandler" />
+	
+	<!-- Below configuration is for LDAP DEV environment server-->
+	 <beans:bean id="contextSource" class="org.springframework.ldap.core.support.LdapContextSource">
+  		<beans:property name="url" value="ldap://corp.capgemini.com" />
+    	<beans:property name="base" value="OU=IN,OU=Employees,DC=corp,DC=capgemini,DC=com" />     
+    	<beans:property name="userDn" value="OU=Employees,DC=corp,DC=capgemini,DC=com" />     	
+	</beans:bean>
+	
+	<beans:bean id="ldapTemplate" class="org.springframework.ldap.core.LdapTemplate">
+  		<beans:constructor-arg ref="contextSource" />
+	</beans:bean>
+
+	<beans:bean id="userSearch" class="org.springframework.security.ldap.search.FilterBasedLdapUserSearch">
+  		<beans:constructor-arg index="0" value=""/>
+  		<beans:constructor-arg index="1" value="cn={0}"/>
+  		<beans:constructor-arg index="2" ref="contextSource" />
+	</beans:bean> 
+	
+	<beans:bean id="ldapAuthProvider" class="org.springframework.security.ldap.authentication.LdapAuthenticationProvider">
+ 		<beans:constructor-arg>
+		   <beans:bean class="org.springframework.security.ldap.authentication.BindAuthenticator">
+		     <beans:constructor-arg ref="contextSource"/>
+		     <beans:property name="userSearch" ref="userSearch" />
+		   </beans:bean>
+ 		</beans:constructor-arg>
+ 		<beans:constructor-arg>
+		   <beans:bean class="com.tesda.security.CustomLdapAuthoritiesPopulator" />
+ 		</beans:constructor-arg>
+	</beans:bean>
+	
+    <authentication-manager>
+    	<authentication-provider ref="ldapAuthProvider" /> 
+	</authentication-manager>
+
+<!--  	<authentication-manager>
+		<authentication-provider>
+			<user-service>
+				<user name="user123" password="pass" authorities="ROLE_USER" />
+				<user name="tesda" password="tesdapass" authorities="ROLE_ADMIN" />
+				<user name="manoranjan" password="sahoo" authorities="ROLE_USER" />
+			</user-service>
+		</authentication-provider>
+	</authentication-manager>  -->
+ 
+	
+<!-- 	<authentication-manager>
+		<authentication-provider>
+		 <jdbc-user-service data-source-ref ="tdmUserDS"
+				users-by-username-query="SELECT USER_ID,PASSWORD,ENABLED FROM TDM_USERS WHERE USER_ID=?"
+				authorities-by-username-query="SELECT U1.USER_ID,U2.ROLE FROM TDM_USERS U1, TDM_USERS_AUTH U2 WHERE U1.USER_ID = U2.USER_ID AND U1.USER_ID =?" />
+		</authentication-provider>
+	</authentication-manager> -->
+	
+	<beans:bean id="sessionRegistry" class="org.springframework.security.core.session.SessionRegistryImpl" />
+	<beans:bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<beans:property name="cacheSeconds" value="0" />
+	</beans:bean>
+</beans:beans>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <configuration debug="true"> -->
+<configuration>
+ 
+	<property name="DEV_HOME" value="D:/logs" />
+ 
+	<appender name="FILE-AUDIT"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${DEV_HOME}/tdmportallogs-%d{yyyy-MM-dd}.log</file>
+		<!-- deny all events with a level below INFO, that is TRACE and DEBUG -->
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+      		<level>INFO</level>
+    	</filter>
+    	<!-- End Filter -->
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<Pattern>
+				%d{HH:mm:ss.SSS} [%thread] %-5level %class{36}.%M %L - %msg%n
+			</Pattern>
+		</encoder>
+ 
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- rollover daily -->
+			<fileNamePattern>${DEV_HOME}/archived/tdmportallogs-%d{yyyy-MM-dd}.%i.log.zip
+                        </fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>10MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+ 
+	</appender>
+ 
+	<logger name="com.tesda.*" level="info"
+		additivity="false">
+		<appender-ref ref="FILE-AUDIT" />
+	</logger>
+	
+	<logger name="com.tesda.*" level="debug"
+		additivity="false">
+		<appender-ref ref="FILE-AUDIT" />
+	</logger>
+	
+	<logger name="com.tesda.*" level="warn"
+		additivity="false">
+		<appender-ref ref="FILE-AUDIT" />
+	</logger>
+	
+	<logger name="com.tesda.*" level="trace"
+		additivity="false">
+		<appender-ref ref="FILE-AUDIT" />
+	</logger>
+ 
+	<root level="debug">
+		<appender-ref ref="FILE-AUDIT" />
+	</root>
+ 
+</configuration>

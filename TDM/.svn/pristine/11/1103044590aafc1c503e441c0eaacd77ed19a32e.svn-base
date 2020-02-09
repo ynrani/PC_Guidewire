@@ -1,0 +1,10 @@
+var topNav='';
+topNav+='<nav class="mainTabCtrl clearfix">';
+topNav+='	<ul>';
+topNav+='		<li id="MRDashBoard"><a href="./tdmDtMaskDashBoardAdmin">Data Masking Request(s)</a><span>Data Masking</span></li>';
+topNav+='		<li id="CRMRDashBoard"><a href="./tdmDtMaskDashBoardCRAdmin">CR Data Masking Request(s)</a><span>CR Data Masking</span></li>';
+topNav+='		<li id="TBRDashBoard"><a href="./tdmOnBoardingDashBoardAdmin">TDM On-boarding Request(s)</a><span>TDM On-boarding</span></li>';
+topNav+='		<li id="CRTBRDashBoard"><a href="./tdmOnBoardingDashBoardCRAdmin">CR TDM On-boarding Request(s)</a><span>CR TDM On-boarding</span></li>';
+topNav+='	</ul>';
+topNav+='</nav>';
+document.write(topNav);

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+	version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
+
+	<persistence-unit name="userPersistenceUnit"
+		transaction-type="RESOURCE_LOCAL">
+		<class>com.tesda.model.DO.TdmUserDO</class>
+		<class>com.tesda.model.DO.TdmUsersAuthDO</class>
+		<class>com.tesda.model.DO.TdmUsersAuthDOPK</class>
+		<class>com.tesda.model.DO.TdmLookupDO</class>
+
+		<properties>
+			<property name="hibernate.show_sql" value="true" />
+		</properties>
+	</persistence-unit>
+
+	<persistence-unit name="provPersistenceUnit"
+		transaction-type="RESOURCE_LOCAL">
+		<class>com.tesda.model.DO.TdmProviderAddrDO</class>
+		<class>com.tesda.model.DO.TdmProviderAddrDOPK</class>
+		<class>com.tesda.model.DO.TdmProviderCategoryDO</class>
+		<class>com.tesda.model.DO.TdmProviderCatMasterDO</class>
+		<class>com.tesda.model.DO.TdmProviderContMaDO</class>
+		<class>com.tesda.model.DO.TdmProviderDO</class>
+		<class>com.tesda.model.DO.TdmProviderSpecialityDO</class>
+		<class>com.tesda.model.DO.TdmProviderSpecMasterDO</class>
+		<class>com.tesda.model.DO.TdmProviderTaxonomyDO</class>
+		<class>com.tesda.model.DO.TdmProviderTypeDO</class>
+		<class>com.tesda.model.DO.TdmProviderTypeMasterDO</class>
+		<class>com.tesda.model.DO.TdmUsStateDO</class>
+		<class>com.tesda.model.DO.TdmCoverageMasDO</class>
+
+		<properties>
+			<property name="hibernate.show_sql" value="true" />
+		</properties>
+	</persistence-unit>
+
+	<persistence-unit name="subscPersistenceUnit"
+		transaction-type="RESOURCE_LOCAL">
+		<class>com.tesda.model.DO.TdmSubscriberDetailsDO</class>
+		<class>com.tesda.model.DO.TdmClaimTypeDetailsDO</class>
+		<properties>
+			<property name="hibernate.show_sql" value="true" />
+		</properties>
+	</persistence-unit>
+
+	<persistence-unit name="claimPersistenceUnit"
+		transaction-type="RESOURCE_LOCAL">
+		
+		<properties>
+			<property name="hibernate.show_sql" value="true" />
+		</properties>
+	</persistence-unit>
+
+	<persistence-unit name="dataMaskingPersistenceUnit">
+		<class>com.tesda.model.DO.RequestorDO</class>
+		<class>com.tesda.model.DO.ReqChDO</class>
+		<class>com.tesda.model.DO.TdmOnboadReqNoTabDO</class>
+		<class>com.tesda.model.DO.TdmOnboardReqDO</class>		
+		<class>com.tesda.model.DO.TdmReservationDO</class>
+		<properties>
+			<property name="hibernate.show_sql" value="true" />
+		</properties>
+	</persistence-unit>
+
+</persistence>

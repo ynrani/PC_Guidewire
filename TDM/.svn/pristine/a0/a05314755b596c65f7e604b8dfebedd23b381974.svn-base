@@ -1,0 +1,881 @@
+@import url("font-face.css");
+html{
+	height:100%;
+}
+body {
+	background-color: #f0efef;
+	margin: 0;
+	color: #000;
+	position:relative;
+}
+/* ~~ Element/tag selectors ~~ */
+ul, ol, dl { /* Due to variations between browsers, it's best practices to zero padding and margin on lists. For consistency, you can either specify the amounts you want here, or on the list items (LI, DT, DD) they contain. Remember that what you do here will cascade to the .nav list unless you write a more specific selector. */
+	padding: 0;
+	margin: 0;
+}
+h1, h2, h3, h4, h5, h6, p {
+	margin-top: 0;	 /* removing the top margin gets around an issue where margins can escape from their containing block. The remaining bottom margin will hold it away from any elements that follow. */
+	padding-right: 2%;
+	padding-left: 1%; /* adding the padding to the sides of the elements within the blocks, instead of the block elements themselves, gets rid of any box model math. A nested block with side padding can also be used as an alternate method. */
+}
+a img { /* this selector removes the default blue border displayed in some browsers around an image when it is surrounded by a link */
+	border: none;
+}
+/* ~~ Styling for your site's links must remain in this order - including the group of selectors that create the hover effect. ~~ */
+a:link {
+	color: #0098cc;
+	text-decoration: none; /* unless you style your links to look extremely unique, it's best to provide underlines for quick visual identification */
+}
+.hrefVisited{
+	color: #0098cc;
+}
+a:visited {
+	 
+	text-decoration: none;
+}
+a:hover, a:active, a:focus { /* this group of selectors will give a keyboard navigator the same hover experience as the person using a mouse. */
+	text-decoration: none;
+}
+/* ~~ This fixed width container surrounds all other blocks ~~ */
+.container {
+	width: 80%;
+	margin: 0 auto; /* the auto value on the sides, coupled with the width, centers the layout */
+	position:relative;
+	margin-bottom:3%;
+	 min-width: 80%;
+}
+.footer .container {
+	margin: 0px auto;	
+}
+/* ~~ The header is not given a width. It will extend the full width of your layout. ~~ */
+header {
+	background-color: #FFFFFF;
+	
+}
+.welcome {
+	padding: 1% 0% 0% 10%;
+	float:left;
+}
+.welcome h5 {
+	font-weight: normal;
+	color: #FFFFFF;
+	padding-right: 0px;
+	padding-left: 0px;
+}
+.primary-nav {
+	float:right;
+	padding: 0% 4% 0% 0%;
+}
+
+.top-blue-nav {
+	background: linear-gradient(to bottom, #122B5F, #21a1d4);
+ 	box-shadow: inset 0 -3px 0 #1f97c7, inset 0 -3px 3px #1f9acc, inset 0 2px 2px #9ad7ef, inset 1px 0 2px #22a4d9, inset -1px 0 2px #22a4d9, 0 1px 1px rgba(0, 0, 0, 0.1), 0 2px 2px rgba(0, 0, 0, 0.06), 0 3px 3px rgba(0, 0, 0, 0.17), 2px 1px 2px rgba(0, 0, 0, 0.05), -2px 1px 2px rgba(0, 0, 0, 0.05);
+ 	overflow: hidden;
+ 	height: 38px;
+ 	background-color: #21a1d4;
+ 
+}
+.navigation {
+	background-color: #FFFFFF;
+	overflow: hidden;
+ 	height: 70px;
+}
+ 
+.title-band {
+	/* background-image: url(../images/title-band.jpg);
+	height: 75px; */
+	 
+}
+.title {
+	float: left;
+	 padding: 0% 0% 3% 9%;
+    position: absolute;
+}
+.title .h3Tdm{
+	background-image: url(../images/comma-white.png);
+	background-repeat: no-repeat;
+	background-position: 63% 0%;
+	color: #009ACA;
+	padding: 24% 0% 0% 0%;
+	margin-top: 0%;
+}
+
+.quick-link {
+	margin-top: 25px;
+	float:right;
+	width: 128px;
+	height:55px;
+	background-image: url(../images/quick-bg.png);
+	background-repeat: no-repeat;
+}
+.quick-link h4 {
+	color: #FFFFFF;
+	font-weight: normal;
+	padding-right: 0px;
+	padding-left: 0px;
+}
+.quick-link h4 a:link {
+	padding: 18px 15px;
+	line-height: 20px;
+	color: #FFFFFF;
+	text-decoration: none; /* unless you style your links to look extremely unique, it's best to provide underlines for quick visual identification */
+	display: block;
+}
+.quick-link a:visited {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+.breadcrumb {
+	margin-top: 2%;
+  padding: 0% 0% 4% 0%;
+  margin-bottom: -1%;
+  list-style: none;
+  font-size: 75%;
+}
+.breadcrumb>li {
+	display: inline-block;
+	padding: 0 5px;
+}
+.breadcrumb>.active {
+	color: #777;
+}
+.breadcrumb li:nth-child(n+2):before {
+	padding: 0 0px;
+	color: #ccc;
+    /*content: "/";*/
+}
+.clearfloat {
+	clear: both;
+}
+.primary-nav nav img {
+	float: left;
+	margin-right: 5px; 
+}
+.content-main {
+	margin-bottom: 20px;
+}
+.content-main hr {
+	border-top: 1px solid #d6d6d6;
+	border-bottom: 1px solid #FFFFFF;
+}
+.content-main h2 {
+	margin-top: 30px;
+	padding-right: 0px;
+	padding-left: 0px;
+	color: #0098cc;
+	font-size: 20px;
+	font-weight: normal;
+}
+.thumbnail {
+	float: left;
+	background-color: #FFFFFF;
+	width: 22.5%;
+	height: auto;
+	-webkit-border-radius: 10px 10px 10px 10px;
+	-moz-box-shadow: 10px 10px 10px 10px;
+	border-radius: 10px 10px 10px 10px;	
+	-webkit-box-shadow: 1px 2px 2px 1px rgba(0,0,0,0.1);
+	-moz-box-shadow: 1px 2px 2px 1px rgba(0,0,0,0.1);
+	box-shadow: 1px 2px 2px 1px rgba(0,0,0,0.1);
+	
+}
+.thumbnail.gutter{
+	margin-right: 1%;
+}
+#search-result {
+	margin: 25px 0px;
+	/*border-bottom: 1px solid #d6d6d6;*/
+}
+.show-result {
+	float: right;
+}
+.main-nav {
+	margin-left: 20%;
+	padding: 1.3% 0% 0% 6%;
+	width: 22%;
+    min-width: 22%;
+	position: absolute;
+	bottom: auto;
+}
+#result-table table {
+	margin: 0px;
+	padding:0px;
+	border: 0px;
+	border-collapse: collapse;
+}
+.table {
+	width: 100%;
+	max-width: 100%;
+	margin-bottom: 20px;
+	border: 0px;
+	background-color: #FFFFFF;
+}
+.table table {
+	padding: 0px;
+	margin: 0px;
+	border: 0px;
+	background-color: #FFFFFF;
+}
+.table th {
+	padding: 8px 5px;
+	background-color: #005f7f;
+	color: #FFFFFF;
+	border-right: 1px solid #408095;
+}
+.table td {
+	padding: 8px 5px;
+}
+.even {
+	background-color: #e4f4f9;
+}
+
+.table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td {
+padding: 5px;
+line-height: 1.42857143;
+vertical-align: top;
+border-bottom: 1px solid #a9d3dc;
+}
+
+/*Pagination CSS Start Here*/
+
+#page-nos {
+	padding-left: 754px;
+	margin-bottom: 20px;
+}
+
+.paginate {
+	display: block;
+	width: 100%;
+	font-size: 12px;
+}
+.paginate ol, ul {
+	list-style: none;
+}
+.paginate.pag1 li {
+	font-weight: bold;
+}
+.paginate.pag1 li a {
+	display: block;
+	float: left;
+	color: #FFFFFF;
+	background: #838383;
+	text-decoration: none;
+	padding: 5px 5px;
+	margin-left: 5px;
+	border-radius: 3px;
+}
+.paginate.pag1 li.single, .paginate.pag1 li.current {
+	display: block;
+	float: left;
+	padding: 5px 12px;
+	margin-left: 5px;
+	border-radius: 3px;
+	color: #FFFFFF;
+	background-color: #0098cc;
+}
+
+ 
+		
+/*Pagination CSS Ends Here*/
+
+<!--Main Nav CSS Start here-->
+/* ~~ The navigation list styles (can be removed if you choose to use a premade flyout menu like Spry) ~~ */
+.main-nav nav ul{
+	list-style: none; /* this removes the list marker */
+}
+.main-nav nav li {
+	list-style: none;
+	font-size: 16px;
+	float:left;
+	margin-right: 30px;
+}
+.main-nav nav a, .main-nav nav a:visited { /* grouping these selectors makes sure that your links retain their button look even after being visited */
+	padding: 8px 5px 5px 0px;
+	display: block; /* this gives the link block properties causing it to fill the whole LI containing it. This causes the entire area to react to a mouse click. */
+	/*width: 160px;  this width makes the entire button clickable for IE6. If you don't need to support IE6, it can be removed. Calculate the proper width by subtracting the padding on this link from the width of your sidebar container. */
+	text-decoration: none;
+	background-color: #FFFFFF;
+	color: #0098cc;
+}
+.main-nav nav a.active, .main-nav nav a:visited {
+	border-bottom: 5px solid #0098cc;
+}
+.main-nav nav a:hover, .main-nav nav a:active, .main-nav nav a:focus { /* this changes the background and text color for both mouse and keyboard navigators */
+	color: #0098cc;
+	text-decoration:none;
+	
+}
+.main-nav .active {
+	color: #0098cc;
+}
+<!--Main Nav CSS End here-->
+
+/* ~~ These are the columns for the layout. ~~ 
+
+1) Padding is only placed on the top and/or bottom of the block elements. The elements within these blocks have padding on their sides. This saves you from any "box model math". Keep in mind, if you add any side padding or border to the block itself, it will be added to the width you define to create the *total* width. You may also choose to remove the padding on the element in the block element and place a second block element within it with no width and the padding necessary for your design.
+
+2) No margin has been given to the columns since they are all floated. If you must add margin, avoid placing it on the side you're floating toward (for example: a right margin on a block set to float right). Many times, padding can be used instead. For blocks where this rule must be broken, you should add a "display:inline" declaration to the block element's rule to tame a bug where some versions of Internet Explorer double the margin.
+
+3) Since classes can be used multiple times in a document (and an element can also have multiple classes applied), the columns have been assigned class names instead of IDs. For example, two sidebar blocks could be stacked if necessary. These can very easily be changed to IDs if that's your preference, as long as you'll only be using them once per document.
+
+4) If you prefer your nav on the left instead of the right, simply float these columns the opposite direction (all left instead of all right) and they'll render in reverse order. There's no need to move the blocks around in the HTML source.
+
+*/
+.sidebar1 {
+	float: right;
+	width: 180px;
+	background-color: #EADCAE;
+	padding-bottom: 10px;
+}
+.content {
+	padding: 10px 0;
+	width: 780px;
+	float: right;
+}
+
+
+
+
+/*Jquery Tabs UI CSS Start Here*/
+
+.ui-widget {
+	font-family: 'Calibri', Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif;
+	font-size: 13px;
+}
+.ui-widget-content p {
+	padding-right: 0px;
+	padding-left: 0px;
+}
+.ui-tabs .ui-tabs-panel {
+	display: block;
+	border-width: 0;
+	padding: 1em .4em;
+	background: none;
+}
+.ui-widget-header {
+	background: #f0efef;
+	border: 0px solid #b9cd6d;
+	border-bottom: 1px solid #d6d6d6;
+	color: #FFFFFF;
+	font-weight: lighter;
+	font-size: 16px;
+}
+.ui-corner-all, .ui-corner-bottom, .ui-corner-right, .ui-corner-br {
+	border-bottom-right-radius: 0px;
+	max-height: 30%;
+  	overflow-y: auto;
+ 	overflow-x: hidden;
+}
+.ui-widget-content {
+	border: 0px solid #aaaaaa;
+	background: #FFFFFF;
+	color: #222222;
+}
+
+.ui-corner-all, .ui-corner-top, .ui-corner-right, .ui-corner-tr {
+	border-top-right-radius: 8px;
+}
+.ui-corner-all, .ui-corner-top, .ui-corner-left, .ui-corner-tl {
+	border-top-left-radius: 8px;
+}
+.ui-tabs .ui-tabs-nav li {
+	list-style: none;
+	float: left;
+	position: relative;
+	top: 0;
+	margin: 1px .5em 0 0;
+	border-bottom-width: 0;
+	padding: 0;
+	white-space: nowrap;
+}
+.ui-state-hover a,
+.ui-state-hover a:hover,
+.ui-state-hover a:link,
+.ui-state-hover a:visited,
+.ui-state-focus a,
+.ui-state-focus a:hover,
+.ui-state-focus a:link,
+.ui-state-focus a:visited {
+	color: #0098cc;
+	text-decoration: none;
+}
+a:focus	{ 
+	outline: none; 
+}
+.ui-state-active a,
+.ui-state-active a:link,
+.ui-state-active a:visited {
+	color: #0098cc;
+	text-decoration: none;
+}
+.ui-tabs .ui-tabs-nav {
+	margin: 0;
+	padding: .2em .0em 0;
+}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+	border: 1px solid #d6d6d6;
+	background: #f0efef;
+	font-weight: bold;
+	color: #1c94c4;
+}
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
+	border: 1px solid #d6d6d6;
+	background: #ACAAAA;
+	font-weight: bold;
+	color: #0098cc;
+}
+.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+    box-shadow: 0px 0px 7px #61C5FA;
+    border-color: #61C5FA;
+ 
+}
+
+
+.ui-datepicker {
+    background: #e4f4f9;
+    border: 1px solid #005f7f;
+    color: #EEE;
+	padding:0px;
+	margin: 0px;
+	border-radius: 0px;
+}
+.ui-datepicker-header { 
+	color: #FFFFFF;
+	background-color: #005f7f;
+	border-radius: 0px;
+}
+.ui-datepicker th {
+	color: #000000;
+}
+.ui-datepicker .ui-state-default, .ui-datepicker .ui-widget-content .ui-datepicker .ui-state-default, .ui-datepicker .ui-widget-header .ui-datepicker .ui-state-default {
+	border: 1px solid #d6d6d6;
+	background: #FFFFFF;
+	font-weight: bold;
+	color: #1c94c4;
+	text-align:center;
+}
+
+.ui-datepicker .ui-corner-all, .ui-datepicker .ui-corner-top, .ui-datepicker .ui-corner-left, .ui-datepicker .ui-corner-tl {
+	border-top-left-radius: 0px;
+}
+.ui-datepicker .ui-corner-all, .ui-datepicker .ui-corner-top, .ui-datepicker .ui-corner-right, .ui-datepicker .ui-corner-tr {
+	border-top-right-radius: 0px;
+}
+
+/*Jquery Tabs UI CSS Ends Here*/
+
+<!--Jquery Date Picker Start CSS-->
+
+
+<!--Jquery Date Picker Ends CSS-->
+
+#main-table  td {
+	vertical-align: top;
+}
+
+.table-gutter {
+	width: 100px;
+}
+
+#form-set tr td {
+	padding: 10px 0px 5px 0px;
+	border: 0px;
+	font-size: 13px;
+	vertical-align: middle;
+}
+ 
+.lable-title span {
+	color: #FB0004;
+}
+.info-text {
+	color: #0098cc;
+	font-size:14px;
+}
+.flied-title {
+	width: 280px;
+	padding-right: 74px;
+}
+.form-control {
+	display: block;
+	width: 286px;
+	padding: 5px 5px 5px 8px;
+	color: #555;
+	background-color: #F5FAFF;
+	background-image: none;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+	box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+	-webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+	-o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+	transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+	font-family:'Calibri', Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif;
+}
+.form-control-half {
+	width: 60px;
+	padding: 5px 5px 5px 8px;
+	color: #555;
+	background-color: #fff;
+	background-image: none;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+	box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+	-webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+	-o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+	transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+	font-family: 'Calibri', Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif;
+}
+.date-control {
+	display: block;
+	width: 160px;
+	padding: 5px 5px 5px 8px;
+	color: #555;
+	background-color: #fff;
+	background-image: url(../images/cal.png);
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+	box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+	-webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+	-o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+	transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+	background-repeat: no-repeat;
+	background-position: 150px center;
+	font-family:'Calibri', Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif;
+}
+.down-control {
+	display: block;
+	width: 300px;
+	padding: 5px 5px 5px 8px;
+	color: #555;
+	background-color: #F5FAFF;
+	background-image: none;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+	box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+	-webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+	-o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+	transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+	font-family:'Calibri', Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif;
+}
+
+.down-control-small {
+	display: block;
+	width: 70px;
+	padding: 5px 5px 5px 8px;
+	color: #555;
+	background-color: #fff;
+	background-image: none;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+	box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+	-webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+	-o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+	transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+	font-family:'Calibri', Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif;
+}
+.radio-inline input[type="radio"] {
+    background-color: none;
+}
+.checkbox-inline, .radio-inline {
+	display: inline-block;
+	padding-left: 0px;
+	margin-bottom: 0;
+	font-weight: 400;
+	vertical-align: top;
+	cursor: pointer;
+	margin-right: 0px;
+	line-height:20px;
+}
+.check-space {
+	margin-right: 20px;
+}
+.btn-primary {
+	color: #fff;
+	background-color: #0098cc;
+	border-color: #2e6da4;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	padding: 10px 20px;
+	cursor: pointer;
+}
+.btn-cell {
+	margin-top: 20px;
+	font-family:'Calibri', Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif;
+}
+
+.btn-popup {
+	color: #fff;
+	background-color: #0098cc;
+	border-color: #2e6da4;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	padding: 4px 15px;
+	margin-left:10px;
+	cursor: pointer;
+}
+/* ~~ This grouped selector gives the lists in the .content area space ~~ */
+.content ul, .content ol {
+	padding: 0 15px 15px 40px; /* this padding mirrors the right padding in the headings and paragraph rule above. Padding was placed on the bottom for space between other elements on the lists and on the left to create the indention. These may be adjusted as you wish. */
+}
+
+/* ~~ The navigation list styles (can be removed if you choose to use a premade flyout menu like Spry) ~~ */
+.primary-nav nav ul{
+	list-style: none; /* this removes the list marker */
+	margin-bottom: 0px; /* this creates the space between the navigation on the content below */
+}
+.primary-nav nav li {
+	font-size: 13px;
+	float:left;
+	padding-left: 15px;
+}
+.primary-nav nav a, nav a:visited { /* grouping these selectors makes sure that your links retain their button look even after being visited */
+	padding: 12px 0px 12px 0px;
+	display: block; /* this gives the link block properties causing it to fill the whole LI containing it. This causes the entire area to react to a mouse click. */
+	/*width: 100px;  this width makes the entire button clickable for IE6. If you don't need to support IE6, it can be removed. Calculate the proper width by subtracting the padding on this link from the width of your sidebar container. */
+	text-decoration: none;
+	color: #FFFFFF;
+	line-height:22px;
+}
+.primary-nav nav a:hover, nav a:active, nav a:focus { /* this changes the background and text color for both mouse and keyboard navigators */
+	
+	text-decoration:underline;
+	color: #FFF;
+}
+
+
+
+/* ~~ The footer ~~ */
+
+.footer {
+ 
+  bottom: 0;
+  width: 100%;
+  font-size: 12px;
+  text-align: center;
+  padding: 0px 0 0;
+  height: 6%;
+}
+
+.footer-container {
+  background: #FFF;
+  border-top: 3px solid #0098cc;
+  height: 7%;
+  bottom: 0;
+}
+.relative{
+	position: relative;
+}
+.copyright-statement {
+  font-family: 'Calibri', Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif;
+  font-size: 12px;
+  color: rgba(1,1,1,0.5);
+  float: left;
+  margin: 27px 0 0;
+}
+.footer-txt {
+	padding-top: 5px;
+	color: #6B6B6B;
+	font-size: 12px;
+	float:left;
+}
+.footer-logo {
+	padding-top: 1%;
+	float: right;
+}
+.footer-txt p {
+	padding-right: 0px;
+	padding-left: 0px;
+	margin-top:7px;
+}
+
+/*HTML 5 support - Sets new HTML 5 tags to display:block so browsers know how to render the tags properly. */
+header, section, footer, aside, article, figure {
+	display: block;
+}
+
+
+.footercontainer {
+	margin-bottom: 15px;
+	width: 100%;
+	margin: 0px auto;
+	position: relative;
+}
+.footerCont{
+	background-color: #f0efef;
+    width: 100%;
+	margin: 150px auto 0;
+	padding: 15px 10px 15px 10px;
+	position: relative;
+}
+
+
+wrapper {
+	min-height:100%;
+	position:relative;
+}
+
+
+.btn-primaryemail {
+	color: #fff;
+	background-color: #0098cc;
+	border-color: #2e6da4;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	padding: 5px 6px;
+	cursor: pointer;
+}
+.btn-cellemail {
+	margin-top: 0px;
+	font-family: 'Calibri', Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif;
+}
+
+.btn-primarylog {
+	  color: #fff;
+	  background-color: #0098cc;
+	  border-color: #2e6da4;
+	  border: 1px solid transparent;
+	  border-radius: 5px;
+	  padding: 7% 8%;
+	  cursor: pointer;
+}
+.btn-celllog {
+	  margin-top: 9%;
+	  margin-right: -4%;
+  	  font-family: 'Calibri', Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif;
+  	  align-content: center;
+}
+ 
+/* Pop-up styles starts */
+.popupOverlay, .confmWithinPop_overlay, #dataLoader_overlay, .popupWithinPop_overlay{
+		display:none;
+		width:100%;
+		height:100%;
+		position:fixed;
+		top:0;
+		left:0;
+		border-radius: 8px;
+		z-index:100;
+		background-color:#000; /* IE 5-7 */ 
+		filter: alpha(opacity=35); /* Netscape */ 
+		-moz-opacity: 0.35; /* Safari 1.x */ 
+		-khtml-opacity: 0.35; /* Good browsers */ 
+		opacity: 0.35;
+}
+.confmWithinPop_overlay{z-index:105;}
+.popupWithinPop_overlay{z-index:102;}
+.popup, .confmWithinPop, .popupWithinPop{
+	display:none;position:fixed;z-index:101;
+	border:2px transparent #000;background-color:#F0EFEF;
+	display:none;width:500px;box-shadow: 2px 2px 10px #000;
+	border-radius: 8px;
+}
+.confmWithinPop,#dataLoader_overlay{z-index:105;}
+.popupWithinPop{z-index:104;}
+.popup .hdr{padding:5px;background-color:#24AAD8;border-bottom:1px solid #9eb8d6;font-weight:bold; border-radius: 8px;}
+.popup .hdr span{color:#fff}
+.popup .hdr a{padding-right:20px;color:#fff}
+.popup .cont{padding:10px;border-radius: 4px;}
+.popup_button{padding-top:20px}
+/* Pop-up styles ends */	
+.fLft{float:left}
+.fRght{float:right}
+
+
+.formcontrolForgot {
+	display: block;
+	width: 160%;
+	padding: 6px 7px 8px 8px;
+	color: #555;
+	background-color: #fff;
+	background-image: none;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	font-family: 'Calibri', Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif;
+	margin: auto;
+}
+
+
+.ynpopup_button{
+  text-align: center;
+}
+.ynpopup_button .cont{
+	padding: 8px 6px 10px 7px;
+  	border-radius: 4px;
+}
+
+
+
+.mainAll {
+    width: 100%;
+    height: auto;
+    min-width: 1000px;
+    min-height:560px
+}
+
+.gridCntr{
+	width: 90%;
+  	height: auto;
+}
+
+
+.headerDiv{
+	height : 15%;
+	width:100%;
+	min-width: 1000px;
+}
+
+
+.headerSec{
+	height: 15%;
+  width: 100%;
+}
+.bodySec{
+  height: 80%;
+  width: 100%;
+  background: #FFE url(../images/bg.jpg) repeat top left;
+}
+.footSec{
+  height: 5%;
+  width: 100%;
+}
+
+.logo{
+	 
+ padding: 0.5% 8%;
+   float: left;
+ 
+}
+
+.pageloading{
+	display:none;
+	position:fixed;
+	z-index: 1000;
+	top: 0;
+	left:0;
+	height:100%;
+	width:100%;
+	background:url(../images/loading-page.gif)
+	            50% 50%
+	            no-repeat;	
+}
+
+body.loading {
+	overflow: hidden;
+}
+
+body.loading .pageloading{
+	display:block;
+}

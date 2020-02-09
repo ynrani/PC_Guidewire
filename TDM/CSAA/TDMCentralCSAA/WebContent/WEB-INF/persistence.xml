@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+	version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
+
+	<persistence-unit name="csaaUserPersistenceUnit" >
+		<class>com.tesda.model.DO.TdmReservationDO</class>
+		<class>com.tesda.model.DO.TdmUserDO</class>
+		<class>com.tesda.model.DO.TdmUsersAuthDO</class>
+		<class>com.tesda.model.DO.TdmUsersAuthDOPK</class>
+		<class>com.tesda.model.DO.CassPolListDO</class>
+		<class>com.tesda.model.DO.TdmPolicySearchDO</class>
+		<properties>
+			<property name = "hibernate.show_sql" value = "true" />
+		</properties>
+	</persistence-unit>
+	 
+	<persistence-unit name="cassPolicyAutoPropertyPersistenceUnit">
+		<class>com.tesda.model.DO.AaaaltcoverageentityDO</class>
+		<class>com.tesda.model.DO.AaadwellscoreDO</class>
+		<class>com.tesda.model.DO.AaaunderwritingquestionDO</class>
+		<class>com.tesda.model.DO.AccidentviolationDO</class>
+	 
+		<class>com.tesda.model.DO.AddressentityDO</class>
+		 
+		<class>com.tesda.model.DO.BalanceentryDO</class>
+		<class>com.tesda.model.DO.BalanceinfoDO</class>
+		<class>com.tesda.model.DO.BillablepolicytermDO</class>
+		<class>com.tesda.model.DO.BillingaccountDO</class>
+		<class>com.tesda.model.DO.BillingtransactionDO</class>
+		<class>com.tesda.model.DO.BrushfiresurchargeDO</class>
+		<class>com.tesda.model.DO.ConstructioninfoDO</class>
+		<class>com.tesda.model.DO.ContactentityDO</class>
+		<class>com.tesda.model.DO.CoverageDO</class>
+	 	<class>com.tesda.model.DO.DriverDO</class>
+		<class>com.tesda.model.DO.DwelldetailDO</class>
+		<class>com.tesda.model.DO.GeneralpartyinfoentityDO</class>
+		<class>com.tesda.model.DO.HoldinfoDO</class>
+		<class>com.tesda.model.DO.InsuredprincipalDO</class>
+		<class>com.tesda.model.DO.LocationDO</class>
+		<class>com.tesda.model.DO.OrderclueentityDO</class>
+		<class>com.tesda.model.DO.OtherorpriorpolicyDO</class>
+		<class>com.tesda.model.DO.PaymentdetailDO</class>
+		<class>com.tesda.model.DO.PolicydetailDO</class>
+		<class>com.tesda.model.DO.PolicysummaryDO</class>
+		<class>com.tesda.model.DO.PremiumentryDO</class>
+		<class>com.tesda.model.DO.RegisteredownerinfoDO</class>
+		<class>com.tesda.model.DO.RiskitemDO</class>	
+		<properties>
+				<property name = "hibernate.show_sql" value = "true" />
+		</properties>		
+	</persistence-unit>
+	
+    <persistence-unit name="fastlaneMappingPersistenceUnitSQL">    
+    	<class>com.tesda.model.DO.fastlaneMapping.FastlaneAcaauTab</class>
+		<class>com.tesda.model.DO.fastlaneMapping.FastlaneAcahoTab</class>
+   </persistence-unit>
+	
+	<!-- 	FastLane SQL Server END -->
+	
+</persistence>

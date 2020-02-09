@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE project>
+<bugcollection analysistimestamp="1279910106071" release=""
+	sequence="0" timestamp="1279910105010" version="1.3.9-rc2">
+	<project projectname="TDG">
+
+	</project>
+
+	<buginstance abbrev="CN" category="BAD_PRACTICE"
+		instancehash="57afbdc4c8b3eaf65667ad2375c54fbf" instanceoccurrencemax="0"
+		instanceoccurrencenum="0" priority="2"
+		type="CN_IMPLEMENTS_CLONE_BUT_NOT_CLONEABLE">
+
+	</buginstance>
+
+
+	<bugcategory category="BAD_PRACTICE">
+		<description>Bad practice</description>
+	</bugcategory>
+	<bugcategory category="CORRECTNESS">
+		<description>Correctness</description>
+	</bugcategory>
+	<bugpattern abbrev="NP" category="BAD_PRACTICE"
+		type="NP_CLONE_COULD_RETURN_NULL">
+		<shortdescription>Clone method may return null</shortdescription>
+		<details></details>
+	</bugpattern>
+	<bugpattern abbrev="Nm" category="BAD_PRACTICE"
+		type="NM_METHOD_NAMING_CONVENTION">
+		<shortdescription>Method names should start with a lower case letter</shortdescription>
+		<details></details>
+	</bugpattern>
+	<bugpattern abbrev="RV" category="CORRECTNESS" type="RV_RETURN_VALUE_IGNORED">
+		<shortdescription>Method ignores return value</shortdescription>
+		<details></details>
+	</bugpattern>
+	<bugpattern abbrev="CN" category="BAD_PRACTICE"
+		type="CN_IMPLEMENTS_CLONE_BUT_NOT_CLONEABLE">
+		<shortdescription>Class defines clone() but doesn't implement
+			Cloneable</shortdescription>
+		<details></details>
+	</bugpattern>
+	<bugcode abbrev="Nm">
+		<description>Confusing method name</description>
+	</bugcode>
+	<bugcode abbrev="RV" cweid="440">
+		<description>Bad use of return value from method</description>
+	</bugcode>
+	<bugcode abbrev="NP" cweid="476">
+		<description>Null pointer dereference</description>
+	</bugcode>
+	<bugcode abbrev="CN" cweid="580">
+		<description>Bad implementation of cloneable idiom</description>
+	</bugcode>
+	<errors errors="0" missingclasses="0"></errors>
+	<findbugssummary alloc_mbytes="63.56" clock_seconds="1.40"
+		cpu_seconds="1.62" gc_seconds="0.26" num_packages="3" peak_mbytes="24.91"
+		priority_1="1" priority_2="3" referenced_classes="18"
+		timestamp="Fri, 23 Jul 2010 20:35:05 +0200" total_bugs="4"
+		total_classes="4" total_size="45" vm_version="14.2-b01">
+
+		<findbugsprofile>
+
+		</findbugsprofile>
+	</findbugssummary>
+	<classfeatures></classfeatures>
+	<history></history>
+</bugcollection>

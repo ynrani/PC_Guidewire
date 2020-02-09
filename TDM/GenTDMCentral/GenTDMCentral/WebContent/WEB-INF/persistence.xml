@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+	version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
+
+	<persistence-unit name="userPersistenceUnit" transaction-type="RESOURCE_LOCAL">
+		<class>com.tdm.model.DO.TdmReservationDO</class>
+		<class>com.tdm.model.DO.TdmUserDO</class>
+		<class>com.tdm.model.DO.TdmUsersAuthDO</class>
+		<class>com.tdm.model.DO.TdmUsersAuthDOPK</class>
+		
+		<properties>
+			<property name = "hibernate.show_sql" value = "true" />
+		</properties>
+	</persistence-unit>
+	
+	<persistence-unit name="provPersistenceUnit" transaction-type="RESOURCE_LOCAL">
+	  	<class>com.tdm.model.DO.TdmProviderAddrDO</class>
+		<class>com.tdm.model.DO.TdmProviderAddrDOPK</class>
+		<class>com.tdm.model.DO.TdmProviderCategoryDO</class>
+		<class>com.tdm.model.DO.TdmProviderCatMasterDO</class>
+		<class>com.tdm.model.DO.TdmProviderContMaDO</class>
+		<class>com.tdm.model.DO.TdmProviderDO</class>
+		<class>com.tdm.model.DO.TdmProviderSpecialityDO</class>
+		<class>com.tdm.model.DO.TdmProviderSpecMasterDO</class>
+		<class>com.tdm.model.DO.TdmProviderTaxonomyDO</class>
+		<class>com.tdm.model.DO.TdmProviderTypeDO</class>
+		<class>com.tdm.model.DO.TdmProviderTypeMasterDO</class>
+		<class>com.tdm.model.DO.TdmUsStateDO</class>
+		<class>com.tdm.model.DO.TdmCoverageMasDO</class>
+		
+		<properties>
+			<property name = "hibernate.show_sql" value = "true" />
+		</properties>
+	</persistence-unit>
+	
+	<persistence-unit name="subscPersistenceUnit" transaction-type="RESOURCE_LOCAL">
+		<class>com.tdm.model.DO.TdmSubscriberDO</class>
+		<class>com.tdm.model.DO.TdmSubscriberNameDO</class>
+		<class>com.tdm.model.DO.TdmSubscriberRelationshipDO</class>
+		<class>com.tdm.model.DO.TdmSuscriberAddressDO</class>
+	
+		<class>com.tdm.model.DO.TdmSubscLobMastDO</class>
+		<class>com.tdm.model.DO.TdmSubscStatusMastDO</class>
+		<class>com.tdm.model.DO.TdmSubscTypeMastDO</class>
+		<class>com.tdm.model.DO.TdmUsStateSubDO</class>
+		
+		<class>com.tdm.model.DO.AccountDO</class>
+		<class>com.tdm.model.DO.CreditCardDO</class>
+		<class>com.tdm.model.DO.CustomerDO</class>
+		<class>com.tdm.model.DO.ReservationDO</class>
+		<properties>
+			<property name = "hibernate.show_sql" value = "true" />
+		</properties>
+	</persistence-unit>
+	
+	<persistence-unit name="claimPersistenceUnit" transaction-type="RESOURCE_LOCAL">
+		<class>com.tdm.model.DO.TdmClaimDO</class>
+		<class>com.tdm.model.DO.TdmClaimLineDetailDO</class>
+		<class>com.tdm.model.DO.TdmClaimSrcMastDO</class>
+		<class>com.tdm.model.DO.TdmClaimStatusMastDO</class>
+		<class>com.tdm.model.DO.TdmClaimTypeMastDO</class>
+		<class>com.tdm.model.DO.TdmPosMastDO</class>
+		<class>com.tdm.model.DO.TdmTypeOfBillMastDO</class>
+		<properties>
+			<property name = "hibernate.show_sql" value = "true" />
+		</properties>
+	</persistence-unit>
+	
+	<persistence-unit name="dataMaskingPersistenceUnit">
+		<class>com.tdm.model.DO.RequestorDO</class>
+		<class>com.tdm.model.DO.ReqChDO</class> 
+		<class>com.tdm.model.DO.TdmOnboadReqNoTabDO</class>
+		<class>com.tdm.model.DO.TdmOnboardReqDO</class>
+		<properties>
+			<property name = "hibernate.show_sql" value = "true" />
+		</properties>
+	</persistence-unit>
+	
+	
+	<persistence-unit name="policySearchPersistenceUnit" transaction-type="RESOURCE_LOCAL">
+		<class>com.tdm.model.DO.PcAccountDO</class>
+		<class>com.tdm.model.DO.PcPolicyDO</class>
+		<class>com.tdm.model.DO.PcPolicyperiodDO</class>
+		<properties>
+			<property name = "hibernate.show_sql" value = "true" />
+		</properties>
+	</persistence-unit>
+	
+	<persistence-unit name="claimSearchPersistenceUnit" transaction-type="RESOURCE_LOCAL">
+		<class>com.tdm.model.DO.CcClaimDO</class>
+		<class>com.tdm.model.DO.CcPolicyDO</class>
+		<properties>
+			<property name = "hibernate.show_sql" value = "true" />
+		</properties>
+	</persistence-unit>
+	
+	<persistence-unit name="csaaUserPersistenceUnit" >
+		<class>com.tdm.model.DO.TdmReservationDO</class>
+    	
+    	<class>com.tdm.model.DO.MetlifePolicyDO</class>
+ 		<class>com.tdm.model.DO.MetlifeClaimDO</class>
+ 		 
+		<class>com.tdm.model.DO.CoverageRiskStg</class>
+		<class>com.tdm.model.DO.CoverageStg</class>
+		<class>com.tdm.model.DO.NoOfDriverStg</class>
+		<class>com.tdm.model.DO.NoOfNameInsuStg</class>
+		<class>com.tdm.model.DO.NoOfVehiStg</class>
+		<class>com.tdm.model.DO.NoOfVioStg</class>
+		<class>com.tdm.model.DO.PolicySummaryStg</class>
+		<properties>
+			<property name = "hibernate.show_sql" value = "true" />
+		</properties>
+	</persistence-unit>
+	
+</persistence>

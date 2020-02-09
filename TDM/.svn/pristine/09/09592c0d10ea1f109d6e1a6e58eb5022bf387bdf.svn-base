@@ -1,0 +1,225 @@
+label.username=User Name
+label.password=Password
+
+label.tabOne=Provider Search
+label.tabTwo=Subscriber Search
+label.tabThree=Claim Search
+label.tabFour=Non Standard Search
+ 
+label.showLink=Show Advance Search
+label.hideLink=Hide Advance Search
+label.main.title=HCSC - Find Test Data
+label.myReservation=My Reservations
+label.logout=Logout
+label.back=Back
+label.back.db=Back To Dashboard
+label.createNewReq=Create New Request
+label.unreserve=Un-Reserve
+
+button.logout=Login
+button.serch=Search
+button.reserve=Reserve
+button.export=Export to Excel
+
+label.noOfRec=Records to be displayed
+label.env=Environment
+label.gender=Gender
+label.state=State
+label.zip=ZIP Code
+label.countyCode=County code
+label.male=Male
+label.female=Female
+label.both=Both
+label.tcId=Test Case Id
+label.tcName=Test Case Name
+
+label.action=Action
+label.expOn=Expires on
+
+label.yes=Yes
+label.no=No
+
+label.prov.provId=Provider ID
+label.prov.type=Provider Type
+label.prov.spec=Provider Specialty
+label.prov.cat=Provider Category
+label.prov.atypical=Atypical Provider
+label.prov.taxo=Taxonomy Code
+label.prov.effDt=Effective Date
+label.prov.tmDt=Term Date
+label.prov.mdId=Medicare ID
+label.prov.contractCode=Contract Code
+label.prov.fname=First Name
+label.prov.lname=Last Name
+label.prov.ptype=Provider Type
+label.prov.catg=Provider Category
+label.prov.speciality=Provider Specialty
+label.prov.licenseNo=License Number
+label.prov.tin=TIN
+label.prov.npi=NPI ID
+label.prov.medicareId=Medicare ID
+label.prov.contract=Contract
+label.prov.eft=EFT
+label.prov.gender=Gender
+label.prov.termdt=Term Date
+label.prov.addLine1=Address Line 1
+label.prov.addLine2=Address Line 2
+label.prov.city=City
+label.prov.state=State
+label.prov.coverage=Coverage
+
+label.subc.subcId=Subscriber ID
+label.subc.dependId=Dependent ID
+label.subc.stype=Subscriber Type
+label.subc.status=Status
+label.subc.lob=LOB
+label.subc.age=Age
+label.subc.between=Between
+label.subc.and=and
+label.subc.cob=With COB
+label.subc.ssn=SSN
+label.subc.dob=DOB
+label.subc.planid=Plan ID
+label.subc.plnname=Plan Name
+label.subc.trmDt=Term Date
+label.subc.contractCode=Contract Code
+label.subc.fname=First Name
+label.subc.lname=Last Name
+label.subc.grp=Group
+label.subc.effDt=Effective Date
+label.subc.type=Subscriber Type
+label.subc.pcp=PCP
+label.subc.gender=Gender
+label.subc.termdt=Term Date
+label.subc.addLine1=Address Line 1
+label.subc.addLine2=Address Line 2
+label.subc.city=City
+label.subc.state=State
+label.subc.zip=ZIP
+
+label.claim.claimId=Claim ID
+label.claim.type=Claim Type
+label.claim.patientFirstName=Patient First Name
+label.claim.patientLastName=Patient Last Name
+label.claim.patientId=Patient ID
+label.claim.claimProviderTIN=Provider TIN
+label.claim.rcptdt=Receipt Date
+label.claim.patientGender=Gender
+label.claim.cptcode=CPT Code
+label.claim.status=Claim Status
+label.claim.source=Claim Source
+label.claim.groupnum=Group ID
+label.claim.proc.code=Proc Code
+label.claim.pend.code=Pend Edit Code
+label.claim.dx.code=Diagnosis Code  
+label.claim.provider.NPI=Provider NPI
+label.claim.pos=POS
+label.claim.modifier=Modifier Code
+label.claim.typOfService=Type of Service
+label.claim.revenueCode=Revenue Code
+label.claim.COB=With COB
+label.claim.auth=Auth on Claim
+label.claim.interest=Interest on Claim 
+label.claim.REF=Ref on Claim
+label.claim.typeOfBill=Type Of Bill
+label.claim.totalCharge=Total Charge
+label.claim.totalAllowed=Total Allowed
+label.claim.totalPaid=Total Paid
+label.claim.deductible=Deductible
+label.claim.copay=Copay
+label.claim.coins=Co-ins
+label.claim.admissiondt=Admission Date 
+label.claim.dischargedt=Discharge Date
+label.claim.statusCode=Claim Status Code
+
+label.dm.dashboard=Data Masking Dashboard
+label.dm.reqDtl=Requestor Details
+label.dm.name=Name
+label.dm.uname=User Name
+label.dm.email=Email ID 
+label.dm.phNo=Phone Number
+label.dm.deptName=Department
+label.dm.needBy=Needed By
+label.dm.projId=Project ID
+label.dm.projName=Project Name
+label.dm.projPhase=Project Phase
+
+label.dm.preReqs=PRE-REQUISITES
+label.pre.q1=Please provide a brief overview of the application including high-level functionality description
+label.pre.q2=What are the data storage mechanisms used by the application?
+label.pre.q2a=Distributed - Sybase, Oracle, DB2, MSSQL etc.
+label.pre.q2b=Flat files - ASCII, XML or EBCDIC
+label.pre.q2c=Mainframe - ADABAS, DB2 on MF 
+label.pre.q2d=Any other data feed like MQ etc
+label.pre.q3=Please notify if any other data storage mechanisms used by the applications? 
+label.pre.q4=Does the application receive any direct feeds from upstream systems to non-production systems? Are these feeds coming from production or non-production upstream environments?
+label.pre.q5=Does the application handle any non-English language? If yes, does the application has defined set which help to differentiate between English & non English characters?
+label.pre.q6=Are there defined upstream / downstream applications data flow and dependency chart available, Please specify? 
+label.pre.q7=Does application have dependency on any other application or third party source? 
+label.pre.q8=Do you anticipate any data store addition/upgrade/de-commission in the application in next 6 months?
+label.pre.q9=Do you have the existing PII / MNPI elements identified in your application? 
+label.pre.q10=Is there any masking already applied by the application team in the non-production environments?
+label.pre.q11=Test Data Management team requires application team to validate masked data and application functionality once the solution is unit tested. Who would perform these validations from the application team? Do you have dedicated QA team who would execute this test? How many testing iterations are required?
+label.pre.q12=Does the application's non production environment contain sensitive elements?
+
+label.dm.dtl=Masking Details
+label.msk.q1=Does the application handle any non-English language? If yes, does the application has defined set which help to differentiate between English & non English characters?
+label.msk.q2=Please specify number of tables in each database(s)?
+label.msk.q3=Please specify count of databases, unique flat file used by the application?
+label.msk.q4=How often do you have schema changes to your data storage systems? E.g.
+label.msk.q4a=a. Addition of new tables
+label.msk.q4b=b. Deletion of existing tables
+label.msk.q4c=c. Add/Drop columns to existing tables
+label.msk.q4d=d. Data type or length changes on existing columns
+label.msk.q4e=e. Property changes specifically identity on/off, default values etc.
+label.msk.q4f=f. Constraints added or removed
+label.msk.q5=What is the approximate volume of data to be handled for masking? 
+label.msk.q6=Do you want "in place" masking for applications or using dedicated "staging environments"? 
+label.msk.q7=How many non-production environments need to be masked for your application?
+label.msk.q7a=Please note that if the UAT environment(s) has production like entitlements, then it may not require masking Development, QA, SIT and any other non-production environments should be masked
+label.msk.q8=How would data be available for masking development? 
+label.msk.q9=Who will take over data masking code developed by developer team for ongoing support? 
+label.msk.q10=What are the required SLA's / SLO's for completing the data masking activity?
+
+msg.usPh=US format Ex.: \n (541) 754-3010  Domestic \n +1-541-754-3010 International \n 1-541-754-3010  Dialed in the US  
+
+label.dtref.dtl=Data Refresh Details
+label.dtref.q1=What is the required data refresh frequency from Production to Non-Production environments - Daily/Weekly/Monthly or Ad hoc Release based?  
+label.dtref.q2=Are there any refresh windows to be adhered to for refreshing non-production environments?
+label.dtref.q3=What are the required SLA's / SLO's for completing the data masking activity?
+
+label.dtsub.dtl=Data Sub-setting Details
+label.dtsub.q1=Data Sub-setting is the process of filtering data before moving it to non-production environments to ensure smaller capacity in those environments is handled. A simple sub-setting like filtering based on geographical constraints or date range can be accommodated in the data masking solution.
+label.dtsub.q11=Do the application has any data sub-setting requirements?
+label.dtsub.q2=What is the criteria for sub-setting? E.g. time range or cross section of data like countries, regions etc
+label.dtsub.q3=Will sub-setting be applicable for all environments to which data is refreshed?
+
+label.chmgmt.dtl=Change Management Details
+label.chmgmt.q1=How often do you have schema changes to your data storage systems? E.g.
+label.chmgmt.q1a=a. Addition of new tables
+label.chmgmt.q1b=b. Deletion of existing tables
+label.chmgmt.q1c=c. Add/Drop columns to existing tables
+label.chmgmt.q1d=d. Data type or length changes on existing columns
+label.chmgmt.q1e=e. Property changes specifically identity on/off, default values etc.
+label.chmgmt.q1f=f. Constraints added or removed
+label.chmgmt.q2=Do you anticipate any datastore addition/upgrade/de-commission in the application in next 6 months?
+
+label.msg.recFndByyou=Records Found. Which has been reserved by you. Please check the 'My Reservation' page
+label.msg.recFndByOth=Records Found. The following users are Reserved with same 'Search Criteria Data'
+label.msg.noRec=No Records Found
+
+label.email.l1l2=E-mail L1/L2 for Support ?
+label.email=Email ?
+label.msg=Email user
+label.userId=User Id
+
+label.tdm.tdr=Test Data Request
+lebel.chkb=Reserve / Unreserve
+
+label.totRecFetc=Total records fetched :
+
+label.tdmestTool=TDM Estimation Tool
+label.tdmestToolDesc=This tool calculates approximate effort for implementing Find Test Data solution for a new application or any TDM related change request. It provides the effort estimation based on user inputs regarding the new application. Please click on the link below to download the TDM Estimation Tool.
+
+label.tdpestTool=TDP Estimation Tool
+label.tdpestToolDesc=This tool calculates approximate effort to perform the Data Masking, Data Sub-setting solution development for new application or any TDP related change request. It provides the approximate efforts based on user inputs and certain parameters like data quality, complexity, automation factor etc. Please click on the link below to download the TDP Estimation Tool.

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-3.1.xsd
+		http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd">
+        
+    
+     <!-- Added for new data base -->
+    <bean id="tdmCsaaPropAutoDS" class="org.springframework.jndi.JndiObjectFactoryBean">
+	    <property name="jndiName" value="datasources/tdmCsaaPropAutoDS" />
+	    <property name="resourceRef" value="true" />        
+	</bean>   
+    <bean id="tdmCsaaUserDS" class="org.springframework.jndi.JndiObjectFactoryBean">
+	    <property name="jndiName" value="datasources/tdmCsaaUserDS" />
+	    <property name="resourceRef" value="true" />        
+	</bean>       
+      
+   <bean id="tdmCsaaFastLaneDSSQL" class="org.springframework.jndi.JndiObjectFactoryBean">
+	    <property name="jndiName" value="datasources/tdmCsaaFastLaneDSSQL" />
+	    <property name="resourceRef" value="true" />        
+   </bean>
+	
+	
+	
+	  <bean id="entityManagerfastlaneMappingSQL"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="persistenceUnitName" value="fastlaneMappingPersistenceUnitSQL" />
+		<property name="dataSource" ref="tdmCsaaFastLaneDSSQL" />
+		<property name="jpaVendorAdapter" ref="jpaVendorAdapterSQL">
+		</property>
+	</bean>
+		
+	<bean id="jpaVendorAdapterSQL" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+			<property name="databasePlatform" value="org.hibernate.dialect.SQLServerDialect" />
+	</bean>
+		
+
+         <!-- 	FastLane SQL Server End -->
+       
+    
+	<!-- Added for new data base -->
+	<bean id="entityManagerFactoryCsaaPoliPropertyAuto"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="persistenceUnitName" value="cassPolicyAutoPropertyPersistenceUnit" />
+		<property name="dataSource" ref="tdmCsaaPropAutoDS" />
+		<property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
+	</bean>
+	
+	  <bean id="entityManagerFactoryCsaaUser"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="persistenceUnitName" value="csaaUserPersistenceUnit" />
+		<property name="dataSource" ref="tdmCsaaUserDS" />
+		<property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
+	</bean>
+    
+	
+	<bean id="jpaVendorAdapter"
+		class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+		<property name="databasePlatform" value="org.hibernate.dialect.Oracle9iDialect" />
+	</bean>
+	
+	
+	<bean id="transactionManageCsaaPropAuto" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactoryCsaaPoliPropertyAuto" />
+		<property name="dataSource" ref="tdmCsaaPropAutoDS" />
+		
+	</bean>
+	<bean id="transactionManageCsaaUser" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactoryCsaaUser" />
+		<property name="dataSource" ref="tdmCsaaUserDS" />
+		
+	</bean>
+	
+	   <!-- 	FastLane SQL Server Start -->
+	<bean id="transactionManageCsaafastLaneSQL" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerfastlaneMappingSQL" />
+		<property name="dataSource" ref="tdmCsaaFastLaneDSSQL" />
+	</bean>
+	
+	   <!-- 	FastLane SQL Server End -->
+   
+    <tx:annotation-driven transaction-manager="entityManagerFactory" /> 
+	<tx:annotation-driven transaction-manager="entityManagerFactoryCsaaPoliPropertyAuto" /> 
+	<tx:annotation-driven transaction-manager="entityManagerFactoryCsaaUser" /> 
+	
+	<!-- 	FastLane SQL Server Start -->
+	 <tx:annotation-driven transaction-manager="entityManagerfastlaneMappingSQL" /> 
+	<!-- 	FastLane SQL Server END -->
+
+	
+    <context:property-placeholder location="classpath:properties/mail.properties" />
+    
+    
+    
+    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl"
+          p:host="pushmail.uk.capgemini.com"
+          p:username="${mail.username}"
+          p:password="${mail.password}">
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.smtp.auth">true</prop>
+                <prop key="mail.smtp.starttls.enable">true</prop>
+            </props>
+        </property>
+    </bean>
+    
+	<bean id="velocityEngine" class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
+	  <property name="velocityProperties">
+		 <value>
+		  resource.loader=class
+		  class.resource.loader.class=org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+		 </value>
+	  </property>
+	</bean> 
+	  
+	<bean id="emailNotificationService" class="com.tesda.email.EmailNotificationServiceImpl">
+	  <property name="mailSender" ref="mailSender"/>
+	  <property name="velocityEngine" ref="velocityEngine"/>
+	</bean>
+	
+	 <bean id="searchPolicyPropListExcelView"
+	   	class="com.tesda.view.SearchPolicyPropListExcelView">
+   </bean>
+   
+   <bean id="searchPolicyAutoListExcelView"
+	   	class="com.tesda.view.SearchPolicyAutoListExcelView">
+   </bean>
+   
+   
+	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+	 <property name="basenames">
+	    <list>
+                <value>classpath:properties/messages</value>
+                <value>classpath:properties/exception</value>        
+        </list>
+     </property> 	 
+	</bean>
+         
+    <bean id="messageAdapter"
+		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<!-- Message converters -->
+				<bean class="org.springframework.http.converter.StringHttpMessageConverter" />
+				<bean class="org.springframework.http.converter.FormHttpMessageConverter"/>
+				<bean class="org.springframework.http.converter.ByteArrayHttpMessageConverter" />
+				<bean class="org.springframework.http.converter.xml.SourceHttpMessageConverter" />
+				<bean class="org.springframework.http.converter.BufferedImageHttpMessageConverter" />
+				<bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter" />
+			</list>
+		</property>
+	</bean>
+</beans>
+
+
+
